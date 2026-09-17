@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: invoice-service
+
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=chinook_invoice;encrypt=true;trustServerCertificate=true
+    username: sa
+    password: 123456-aA
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        physical_naming_strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+  cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            connect-timeout: 2000
+            read-timeout: 2000
+
+# application.properties
+# app.clients.customer-url=
+app:
+  clients:
+    customer-url: http://localhost:8082
+    catalog-url: http://localhost:8081
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+server:
+  port: 8083
