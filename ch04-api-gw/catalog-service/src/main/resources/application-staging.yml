@@ -1,0 +1,7 @@
+# application.yml               -> goc config
+# application-{profile}.yml     -> extends cai goc va apply cai moi override theo profile
+
+# vd application-staging        -> profile=staging
+#    application-prod           -> profile=prod
+server:
+  port: 8091
